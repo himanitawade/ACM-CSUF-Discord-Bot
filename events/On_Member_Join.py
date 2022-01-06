@@ -23,7 +23,8 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-  print("A new member has joined!!")
-
+  assign_role = discord.utils.get(member.guild.roles,id = int(os.environ.get('Role_ID')) ) 
+  await member.add_roles(assign_role, atomic=True)
 
 client.run(os.environ.get('Himani'))
+
